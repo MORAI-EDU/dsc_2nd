@@ -10,7 +10,7 @@ class IMGParser:
         rospy.init_node('IMGParser', anonymous=True)
         self.image_sub = rospy.Subscriber("/image_jpeg/compressed", CompressedImage, self.img_callback)
         rospy.spin()
-
+        cv2.namedWindow("Image window")
 
     def img_callback(self, msg):
         np_arr = np.frombuffer(msg.data, np.uint8)
