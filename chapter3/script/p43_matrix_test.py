@@ -72,7 +72,7 @@ class Perspective_matrix_test:
                     data.orientation.y, 
                     data.orientation.z, 
                     data.orientation.w)
-        roll, pitch, pitch = euler_from_quaternion(quaternion)
+        roll, pitch, yaw = euler_from_quaternion(quaternion)
         self.pitch = pitch
 
 
