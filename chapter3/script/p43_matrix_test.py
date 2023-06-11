@@ -1,7 +1,7 @@
 #!/usr/bin/env python
  
 import rospy, sys, cv2, numpy as np
-from IP_MATRIX import extrinsic_matrix, intrinsic_matrix
+from p36_IP_MATRIX import extrinsic_matrix, intrinsic_matrix
 from sensor_msgs.msg import CompressedImage, Imu
 
 from tf.transformations import euler_from_quaternion
