@@ -1,0 +1,9 @@
+<launch>
+    <node pkg="chapter14" type="global_path_pub.py" name="read_path_pub"  />
+    <node pkg="chapter14" type="local_path_pub.py" name="path_pub" output="screen" />    
+    <node pkg="chapter14" type="lattice_planner.py" name="lattice_planner" output="screen"/>
+    <node pkg="chapter14" type="pure_pursuit.py" name="pure_pursuit" output="screen"/>
+
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find chapter14)/rviz/lattice_driving.rviz" />
+</launch>
+
