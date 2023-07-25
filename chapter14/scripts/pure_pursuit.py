@@ -72,8 +72,7 @@ class pure_pursuit :
                     self.ctrl_cmd_msg.velocity = 0.0
 
                     rospy.loginfo("no found forward point")
-                    self.ctrl_cmd_msg.steering = 0.0
-                
+                                    
                 
                 self.ctrl_cmd_pub.publish(self.ctrl_cmd_msg)
                 
