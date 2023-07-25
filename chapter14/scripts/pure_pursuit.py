@@ -6,7 +6,8 @@ import rospy
 from math import cos,sin,pi,sqrt,pow,atan2
 from geometry_msgs.msg import Point
 from nav_msgs.msg import Path
-from morai_msgs.msg import CtrlCmd,EgoVehicleStatus
+from morai_msgs.msg import CtrlCmd,EgoVehicleStatus, EventInfo
+from morai_msgs.srv import MoraiEventCmdSrv
 import numpy as np
 
 
@@ -22,8 +23,13 @@ class pure_pursuit :
         self.ctrl_cmd_pub = rospy.Publisher('ctrl_cmd',CtrlCmd, queue_size=1)
         self.ctrl_cmd_msg = CtrlCmd()
         self.ctrl_cmd_msg.longlCmdType = 2         
-        
 
+
+        rospy.wait_for_service('/Service_MoraiEventCmd')
+        self.event_srv = rospy.ServiceProxy('Service_MoraiEventCmd', MoraiEventCmdSrv)        
+        self.event = EventInfo()
+
+        self.is_event = False      
         self.is_lattice_path = False
         self.is_status = False
         self.is_global_path = False
@@ -42,9 +48,21 @@ class pure_pursuit :
         while not rospy.is_shutdown():
 
             if self.is_global_path and self.is_lattice_path and self.is_status:
+
                 steering = self.calc_pure_pursuit()
 
                 if self.is_look_forward_point :
+                    if not self.is_event:
+                        self.event.option = 1
+                        self.event.ctrl_mode = 3
+                        self.event_srv(self.event)
+
+                        self.event.option = 2
+                        self.event.gear = 4
+                        self.event_srv(self.event)                 
+
+
+                        self.is_event = True
                     self.ctrl_cmd_msg.steering = steering
                     self.ctrl_cmd_msg.velocity = 60 #target_velocity
                     rospy.loginfo("steering : {0}".format(steering))

@@ -7,6 +7,8 @@ from morai_msgs.msg  import EgoVehicleStatus,ObjectStatusList
 from geometry_msgs.msg import PoseStamped, Point32
 from sensor_msgs.msg import PointCloud
 from nav_msgs.msg import Path
+
+
 import numpy as np
 
 class latticePlanner:
@@ -19,6 +21,7 @@ class latticePlanner:
 
         self.lattice_path_pub = rospy.Publisher('/lattice_path', Path, queue_size = 1)
         self.object_pub = rospy.Publisher('/Object', PointCloud, queue_size = 1)
+
 
         self.is_path = False
         self.is_status = False
@@ -120,6 +123,7 @@ class latticePlanner:
             world_ego_vehicle_position = np.array([[vehicle_pose_x], [vehicle_pose_y], [1]])
             local_ego_vehicle_position = det_trans_matrix.dot(world_ego_vehicle_position)
             lane_off_set = [-3.0, -1.75, -1, 1, 1.75, 3.0]
+            # lane_off_set = [-5.0, -2.75, -1, 1, 2.75, 5.0]
             local_lattice_points = []
             
             for i in range(len(lane_off_set)):
@@ -191,8 +195,6 @@ class latticePlanner:
 
             
             for i in range(len(out_path)):          
-
-                
                 globals()['lattice_pub_{}'.format(i+1)] = rospy.Publisher('/lattice_path_{}'.format(i+1),Path,queue_size=1)
                 globals()['lattice_pub_{}'.format(i+1)].publish(out_path[i])
         
