@@ -3,6 +3,7 @@
 
 import rospy, rospkg
 import rosbag
+import time
 
 from morai_msgs.msg import EventInfo
 from morai_msgs.srv import MoraiEventCmdSrv
@@ -26,19 +27,22 @@ class rosbag_replay :
         rospack = rospkg.RosPack()
         pkg_path = rospack.get_path('chapter14')
         bag_file_path = pkg_path + '/'+'ctrlcmd.bag'      
-
+        
+        prev_time = None
+        rate = 0.0 
 
         with rosbag.Bag(bag_file_path, 'r') as bag:
-
-            
-            rate = rospy.Rate(bag.get_message_count() / (bag.get_end_time()-bag.get_start_time()))
-            
-            for topic, msg, t in bag.read_messages():
+            for topic, msg, t in bag.read_messages():                
+                if not prev_time :
+                    prev_time = t.to_sec()
+                else:                    
+                    rate = t.to_sec() - prev_time                    
+                    prev_time = t.to_sec()
                 
                 pub = rospy.Publisher(topic, type(msg), queue_size=10)
                 pub.publish(msg)
                 print('ctrl_cmd_pub')
-                rate.sleep()
+                time.sleep(rate)
 
 if __name__ == '__main__':
     try:
