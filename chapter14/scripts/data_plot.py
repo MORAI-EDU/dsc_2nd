@@ -21,12 +21,14 @@ class DataPlotNode:
             plt.xlabel('Time [s]')
             plt.ylabel('Wheel angle[deg]')
             plt.title('Wheel angle Plot')
-            plt.pause(0.01)
-            self.rate.sleep()
+            plt.pause(0.001)
+            # self.rate.sleep()
 
     def ctrl_cmd_cb(self, msg):                
         self.time_data.append(rospy.get_time())        
         self.sensor_data.append(msg.steering * 13.9 * 180 / 3.14)
+
+    
 
 
 if __name__ == '__main__':
