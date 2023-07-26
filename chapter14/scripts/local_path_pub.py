@@ -25,7 +25,7 @@ class path_pub :
         
         self.is_status = False
         self.is_global_path = False
-        self.local_path_size = 50
+        self.local_path_size = 100
 
         rate = rospy.Rate(20) # 20hz
 

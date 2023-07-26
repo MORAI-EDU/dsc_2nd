@@ -27,29 +27,31 @@ class latticePlanner:
         self.is_status = False
         self.is_obj = False
 
+        self.evade_distance = 20 #m
+
         rate = rospy.Rate(30) # 30hz
         while not rospy.is_shutdown():            
             if self.is_path and self.is_status and self.is_obj:                
                 if self.checkObject(self.local_path, self.object_data):
-
                     lattice_path = self.latticePlanner(self.local_path, self.status_msg)
                     lattice_path_index = self.collision_check(self.object_data, lattice_path)                    
                     self.lattice_path_pub.publish(lattice_path[lattice_path_index])
 
                 else:
                     self.lattice_path_pub.publish(self.local_path)
-
-                
+               
             rate.sleep()
 
     def checkObject(self, ref_path, object_data):
         is_crash = False
         for obstacle in object_data.obstacle_list:
             for path in ref_path.poses:  
-                dis = sqrt(pow(path.pose.position.x - obstacle.position.x, 2) + pow(path.pose.position.y - obstacle.position.y, 2))                
-                if dis < 2.35:
-                    is_crash = True
-                    break
+                dis = sqrt(pow(path.pose.position.x - obstacle.position.x, 2) + pow(path.pose.position.y - obstacle.position.y, 2))
+                if dis < 2.35 :
+                    object_dis = sqrt(pow(self.status_msg.position.x - obstacle.position.x, 2) + pow(self.status_msg.position.y - obstacle.position.y, 2))                    
+                    if object_dis < self.evade_distance:
+                        is_crash = True
+                        break
 
         return is_crash
 
@@ -99,7 +101,8 @@ class latticePlanner:
         
         if look_distance < 20 :
             look_distance = 20                    
-
+        
+        
         if len(ref_path.poses) > look_distance :  
             global_ref_start_point      = (ref_path.poses[0].pose.position.x, ref_path.poses[0].pose.position.y)
             global_ref_start_next_point = (ref_path.poses[1].pose.position.x, ref_path.poses[1].pose.position.y)
