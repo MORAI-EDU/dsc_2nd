@@ -10,6 +10,8 @@ from morai_msgs.msg import CtrlCmd,EgoVehicleStatus, EventInfo
 from morai_msgs.srv import MoraiEventCmdSrv
 import numpy as np
 
+# import matplotlib.pyplot as plt
+# from matplotlib.animation import FuncAnimation
 
 class pure_pursuit :
     def __init__(self):
@@ -44,6 +46,8 @@ class pure_pursuit :
         self.max_lfd = 30
         self.lfd_gain = 0.78
 
+        # self.plot()
+        
         rate = rospy.Rate(30) # 30hz
         while not rospy.is_shutdown():
 
@@ -74,9 +78,40 @@ class pure_pursuit :
                     rospy.loginfo("no found forward point")
                                     
                 
+                # self.x.append(self.data_count)
+                # self.y.append(self.ctrl_cmd_msg.steering * 13.9 * 180 / 3.14)
+
+
                 self.ctrl_cmd_pub.publish(self.ctrl_cmd_msg)
                 
             rate.sleep()
+
+    # def init(self):
+    #     self.line.set_data([], [])
+    #     return self.line,    
+    
+    # def update(self, frame):                
+    #     self.line.set_data(self.x, self.y)
+    #     return self.line,
+
+    # def plot(self):             
+    #     self.data_count = 0
+    #     self.x = []
+    #     self.y = [] 
+
+    #     self.fig, self.ax = plt.subplots()
+    #     self.line, = self.ax.plot([], [], lw=2)
+    #     self.ax.set_xlim(0, 10)
+    #     self.ax.set_ylim(-2, 2)
+    #     self.ax.set_xlabel('X(time)')
+    #     self.ax.set_ylabel('Y(Wheel angle / deg)')
+    #     self.ax.set_title('Wheel angle plot')
+
+    #     ani = FuncAnimation(self.fig, self.update, frames=range(200), init_func=self.init, blit=True, interval=100)
+
+    #     # 애니메이션 실행
+    #     plt.show()
+        
 
     def path_callback(self,msg):
         self.is_lattice_path = True
