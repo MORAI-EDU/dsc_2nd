@@ -1,0 +1,6 @@
+float64 thrust
+float64 rudder
+geometry_msgs/Vector3 position
+geometry_msgs/Vector3 rotation
+geometry_msgs/Vector3 velocity
+geometry_msgs/Vector3 angular_velocity
