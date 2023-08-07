@@ -16,7 +16,7 @@ class RosManager:
     def __init__(self):
         rospy.init_node("morai_standard3", anonymous=True)
         rospack=rospkg.RosPack()
-        self.file_path=rospack.get_path("algorithm")
+        self.file_path=rospack.get_path("chapter5")
         load_path = self.file_path + "/../../yolov8n.pt"
         print(load_path)
         # self.model = YOLO('yolov8n.pt')
