@@ -56,8 +56,11 @@ class Morai_DDPG(gym.Env):
         sensor_capture_mode=bool(arg[2])
         rospy.Rate(30)
         self.time_step = 0
-
-        mgeo_planner_map = MGeoPlannerMap.create_instance_from_json('../catkin_ws/src/gen_ros/scripts/R_KR_PG_K-City')
+        rospack = rospkg.RosPack()
+        pkg_path = rospack.get_path('chapter6')
+        
+        load_path = pkg_path + '/scripts/R_KR_PG_K-City'
+        mgeo_planner_map = MGeoPlannerMap.create_instance_from_json(load_path)
         node_set = mgeo_planner_map.node_set
         link_set = mgeo_planner_map.link_set
         self.nodes=node_set.nodes
@@ -239,7 +242,7 @@ class Morai_DDPG(gym.Env):
             ego_car["mid_road"] = -(abs_dy /(lane_width / 2)) 
             
         car_wp_x, car_wp_y = self.make_car_coordinate(ego_stat.position.x, ego_stat.position.y, 
-                                                      tmp_point[min_idx][0], tmp_point[min_idx][1],self.ego_yaw)
+                                                      tmp_points[min_idx][0], tmp_points[min_idx][1],self.ego_yaw)
         
         
         ego_car["waypoint_x"] = car_wp_x
@@ -368,7 +371,10 @@ if __name__ == '__main__':
         print("morai before")
         env = Morai_DDPG()
         print("morai after")
-        agent = Agent(alpha=0.000025, beta=0.00025, input_dims=[11], tau=0.001, env=env,batch_size=512,  layer1_size=400, layer2_size=300, n_actions=2)
+        rospack = rospkg.RosPack()
+        pkg_path = rospack.get_path('chapter6')
+        model_path = pkg_path + '/scripts/model_save'
+        agent = Agent(alpha=0.000025, beta=0.00025, input_dims=[9], tau=0.001, env=env,batch_size=512,  layer1_size=400, layer2_size=300, n_actions=2, save_dir=model_path)
         first = True
         # agent.load_models()
         score_history = []

@@ -11,7 +11,7 @@ import os
 class Agent(object):
     def __init__(self, alpha, beta, input_dims, tau, env, gamma=0.99,
                  n_actions=2, max_size=1000000, layer1_size=400,
-                 layer2_size=300, batch_size=32):
+                 layer2_size=300, batch_size=32, save_dir='./'):
         self.gamma = gamma
         self.tau = tau
         self.memory = ReplayBuffer(max_size, input_dims, n_actions)
@@ -19,17 +19,17 @@ class Agent(object):
 
         self.actor = ActorNetwork(alpha, input_dims, layer1_size,
                                   layer2_size, n_actions=n_actions,
-                                  name='Actor')
+                                  name='Actor',chkpt_dir=save_dir)
         self.critic = CriticNetwork(beta, input_dims, layer1_size,
                                     layer2_size, n_actions=n_actions,
-                                    name='Critic')
+                                    name='Critic',chkpt_dir=save_dir)
 
         self.target_actor = ActorNetwork(alpha, input_dims, layer1_size,
                                          layer2_size, n_actions=n_actions,
-                                         name='TargetActor')
+                                         name='TargetActor',chkpt_dir=save_dir)
         self.target_critic = CriticNetwork(beta, input_dims, layer1_size,
                                            layer2_size, n_actions=n_actions,
-                                           name='TargetCritic')
+                                           name='TargetCritic',chkpt_dir=save_dir)
 
         self.noise = OUActionNoise(mu=np.zeros(n_actions))
 
