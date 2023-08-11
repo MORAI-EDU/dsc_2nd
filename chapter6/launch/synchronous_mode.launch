@@ -1,0 +1,5 @@
+<launch>
+        <!-- args = "(추종할 경로 이름) (센서캡쳐모드 유무)" -->
+	<node pkg="chapter6" type="synchronous_planner.py" name="sync_planner" args="kcity False" output="screen" />
+
+</launch>
