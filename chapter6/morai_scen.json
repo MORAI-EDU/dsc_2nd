@@ -1,122 +1,122 @@
 {
   "version": 1.0,
   "egoVehicle": {
-    "DataID": 20200012,
+    "DataID": 20200003,
     "UNIQUEID": -1,
     "m_eobstacleObjType": 0,
     "initPosition": {
       "initPositionMode": "Absolute",
       "pos": {
-        "x": 14.722999572753906,
-        "y": 1102.112060546875,
-        "z": -0.31000000238418579,
-        "_x": "14.723",
-        "_y": "1,102.112",
-        "_z": "-0.310"
+        "x": 106.98799896240234,
+        "y": 1232.43603515625,
+        "z": -0.40900000929832458,
+        "_x": "106.988",
+        "_y": "1,232.436",
+        "_z": "-0.409"
       },
       "rot": {
-        "roll": "-359.639",
-        "pitch": "0.038",
-        "yaw": "60.247"
+        "roll": "-359.693",
+        "pitch": "0.489",
+        "yaw": "-29.315"
       },
       "initLink": "",
       "initLinkRatio": 0,
       "gear": 4,
       "vehicleSaveData": {
-        "velocity": 0.49785876274108887,
+        "velocity": 3.6080234050750732,
         "inputData": [
           0,
           0,
           0,
           0,
           0,
-          0,
+          1,
           4,
           0,
           0,
           0
         ],
         "vehicle": {
-          "time": 64.841133117675781,
+          "time": 414.031005859375,
           "lastVelocity": {
-            "x": -0.067511096596717834,
-            "y": -3.9807702705729753E-05,
-            "z": -0.12073306739330292
+            "x": -0.87221556901931763,
+            "y": -0.0020993684884160757,
+            "z": 0.49209094047546387
           },
           "lastImpactTime": 0.0
         },
         "wheels": [
           {
-            "L": 0.62880957126617432,
-            "Tr": 0.53562945127487183,
-            "contactDepth": 0.051050253212451935,
+            "L": 3.6877517700195313,
+            "Tr": -18.908130645751953,
+            "contactDepth": 0.052271157503128052,
             "lastTireForce": {
-              "x": -21.036041259765625,
-              "y": -1.4878526926040649
+              "x": 22.511466979980469,
+              "y": 59.087909698486328
             }
           },
           {
-            "L": 0.62830346822738647,
-            "Tr": 0.61683517694473267,
-            "contactDepth": 0.050581701099872589,
+            "L": 3.6864709854125977,
+            "Tr": -18.907051086425781,
+            "contactDepth": 0.049793392419815063,
             "lastTireForce": {
-              "x": -76.829727172851563,
-              "y": -1.7134219408035278
+              "x": -72.485946655273438,
+              "y": 59.084499359130859
             }
           },
           {
-            "L": 0.628816545009613,
-            "Tr": 0.53187346458435059,
-            "contactDepth": 0.049211122095584869,
+            "L": 3.6877572536468506,
+            "Tr": 0.1888287365436554,
+            "contactDepth": 0.033440500497817993,
             "lastTireForce": {
-              "x": -19.423431396484375,
-              "y": -1.4774265289306641
+              "x": -12.545982360839844,
+              "y": -0.59008979797363281
             }
           },
           {
-            "L": 0.62828606367111206,
-            "Tr": 0.61587297916412354,
-            "contactDepth": 0.049998797476291656,
+            "L": 3.6865024566650391,
+            "Tr": 0.18977983295917511,
+            "contactDepth": 0.035564213991165161,
             "lastTireForce": {
-              "x": -44.766502380371094,
-              "y": -1.7107579708099365
+              "x": -13.367018699645996,
+              "y": -0.59306198358535767
             }
           }
         ],
         "engine": {
-          "L": 0.0,
-          "Treaction": 0.0,
+          "L": 39.258785247802734,
+          "Treaction": -30.693767547607422,
           "rpmLimiterActive": false,
           "rpmLimiterTime": 0.0,
-          "tcsActivationTime": 0.0
+          "tcsActivationTime": -1.0
         },
         "gearbox": {
-          "L": 0.0,
+          "L": 0.053734105080366135,
           "manualGear": 0,
           "manualRatio": 0.0,
           "engaged": false,
           "lastEngagedTime": 0.0,
           "lastAutoShiftTime": 0.0,
           "vehicleMoving": false,
-          "gearMode": 0,
-          "automaticGear": 0,
-          "automaticRatio": 0.0,
+          "gearMode": 4,
+          "automaticGear": 1,
+          "automaticRatio": 3.8670001029968262,
           "transition": false,
-          "transitionStartedTime": 0.0,
-          "fromGear": 0,
-          "toGear": 0,
-          "fromRatio": 0.0,
-          "toRatio": 0.0,
-          "transitionRatio": 0.0
+          "transitionStartedTime": 406.73501586914063,
+          "fromGear": -1,
+          "toGear": 1,
+          "fromRatio": -5.35099983215332,
+          "toRatio": 3.8670001029968262,
+          "transitionRatio": -5.35099983215332
         },
         "lastVelocity": {
-          "x": -0.067511096596717834,
-          "y": -3.9807702705729753E-05,
-          "z": -0.12073306739330292
+          "x": -0.87221556901931763,
+          "y": -0.0020993684884160757,
+          "z": 0.49209094047546387
         }
       }
     },
-    "currentVelocity": 0.49785876274108887,
+    "currentVelocity": 3.6080234050750732,
     "v2vUDPSessionInfo": {
       "isInit": false,
       "v2vConfig": {
@@ -128,7 +128,7 @@
       }
     },
     "beforeControlMode": 0,
-    "currentControlMode": 7
+    "currentControlMode": 1
   },
   "vehicleList": [],
   "pedestrianList": [],
@@ -137,38 +137,38 @@
   "tlList": [
     {
       "index": 0,
-      "state": 2,
-      "deltaTime": 4.8468966484069824
+      "state": 0,
+      "deltaTime": 7.7566390037536621
     },
     {
       "index": 1,
-      "state": 2,
-      "deltaTime": 4.8468966484069824
+      "state": 0,
+      "deltaTime": 7.7566390037536621
     },
     {
       "index": 2,
-      "state": 2,
-      "deltaTime": 4.8468966484069824
+      "state": 3,
+      "deltaTime": 17.753131866455078
     },
     {
       "index": 3,
-      "state": 1,
-      "deltaTime": 14.862209320068359
+      "state": 2,
+      "deltaTime": 17.777339935302734
     },
     {
       "index": 4,
-      "state": 1,
-      "deltaTime": 14.862209320068359
+      "state": 2,
+      "deltaTime": 17.777339935302734
     },
     {
       "index": 5,
-      "state": 2,
-      "deltaTime": 4.8468966484069824
+      "state": 3,
+      "deltaTime": 7.7566390037536621
     },
     {
       "index": 6,
-      "state": 4,
-      "deltaTime": 4.8468966484069824
+      "state": 2,
+      "deltaTime": 17.777339935302734
     }
   ],
   "mapInfo": {
