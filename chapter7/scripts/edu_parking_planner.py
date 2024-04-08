@@ -484,7 +484,7 @@ class planner :
         rospy.init_node('parking_planner', anonymous=True)
 
         #publihser
-        ctrl_pub = rospy.Publisher('/ctrl_cmd',CtrlCmd, queue_size=1)
+        ctrl_pub = rospy.Publisher('/ctrl_cmd_0',CtrlCmd, queue_size=1)
         path_pub = rospy.Publisher('/parking_path',Path, queue_size=1)
 
         #subscriber

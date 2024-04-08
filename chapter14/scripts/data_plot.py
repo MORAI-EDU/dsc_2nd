@@ -12,7 +12,7 @@ class DataPlotNode:
         self.sensor_data = []
 
         # 구독자 생성
-        rospy.Subscriber('/ctrl_cmd', CtrlCmd, self.ctrl_cmd_cb)
+        rospy.Subscriber('/ctrl_cmd_0', CtrlCmd, self.ctrl_cmd_cb)
 
         while not rospy.is_shutdown():
             # 데이터 플롯

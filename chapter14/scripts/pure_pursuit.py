@@ -22,7 +22,7 @@ class pure_pursuit :
         rospy.Subscriber("/lattice_path", Path, self.path_callback)        
         rospy.Subscriber("/Ego_topic",EgoVehicleStatus, self.status_callback) 
 
-        self.ctrl_cmd_pub = rospy.Publisher('ctrl_cmd',CtrlCmd, queue_size=1)
+        self.ctrl_cmd_pub = rospy.Publisher('ctrl_cmd_0',CtrlCmd, queue_size=1)
         self.ctrl_cmd_msg = CtrlCmd()
         self.ctrl_cmd_msg.longlCmdType = 2         
 

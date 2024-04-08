@@ -9,7 +9,7 @@ from morai_msgs.msg import CtrlCmd
 class rosbag_recorder :
     def __init__(self):
         rospy.init_node('rosbag_recorder')
-        rospy.Subscriber('/ctrl_cmd', CtrlCmd, self.ctrlcmd_cb)
+        rospy.Subscriber('/ctrl_cmd_0', CtrlCmd, self.ctrlcmd_cb)
         rospack = rospkg.RosPack()
         pkg_path = rospack.get_path('chapter14')
         bag_file_path = pkg_path + '/'+'ctrlcmd.bag'      
