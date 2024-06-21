@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
  
 import rospy, cv2, os
 import numpy as np
@@ -26,9 +26,11 @@ class Basic_filtering:
         filtered_x = cv2.filter2D(img_gray, -1, mask_x)
         filtered_y = cv2.filter2D(img_gray, -1, mask_y)
 
-        cv2.imshow('original', img_gray)
-        cv2.imshow('x', filtered_x)
-        cv2.imshow('y', filtered_y)
+        # cv2.imshow('original', img_gray)
+        # cv2.imshow('x', filtered_x)
+        # cv2.imshow('y', filtered_y)
+        temp = cv2.hconcat([img_gray, filtered_x, filtered_y])
+        cv2.imshow('original, x, y', temp)
         cv2.waitKey(1)
 
 

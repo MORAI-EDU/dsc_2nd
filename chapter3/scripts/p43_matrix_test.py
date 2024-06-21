@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
  
 import rospy, sys, cv2, numpy as np
 from p36_IP_MATRIX import extrinsic_matrix, intrinsic_matrix
@@ -18,7 +18,7 @@ class Perspective_matrix_test:
         # wait for imu connection
         while self.pitch is None: 
             pass
-        print(f"imu topic now connected pitch : {self.pitch}")
+        print(f"imu topic now connected, pitch : {self.pitch}")
 
         # camera extrinsic parameter (vehicle -> camera)
         roll = 0       # degree

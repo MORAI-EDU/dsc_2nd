@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 import rospy, rospkg
@@ -24,7 +24,7 @@ class rosbag_recorder :
 
     def ctrlcmd_cb(self, cmd):        
         try:
-            self.bag_wrtier.write('/ctrl_cmd',cmd)
+            self.bag_wrtier.write('/ctrl_cmd_0',cmd)
             rospy.loginfo('ctrl_cmd_writhe')
         except:
             pass

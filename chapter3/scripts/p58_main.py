@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
  
 import rospy, sys, cv2, os, numpy as np
 from tf.transformations import euler_from_quaternion
