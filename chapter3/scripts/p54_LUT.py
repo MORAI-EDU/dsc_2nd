@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import numpy as np
 
 def get_lut(world_max_x, world_min_x, x_interval,
